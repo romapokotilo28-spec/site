@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Портфолио romapokotilo28-spec. Кликер 67 — игра для Яндекс Игр: 12 улучшений, престиж и интерфейс на двух языках.">
+  <meta name="description" content="Full-stack разработчик. Сайты, серверное ПО и плагины. Примеры: GRTP, GWMSync и GNexus.">
   <meta name="theme-color" content="#000000">
-  <meta property="og:title" content="Портфолио — Кликер 67">
-  <meta property="og:description" content="Двенадцать улучшений, престиж с миллиона очков и интерфейс на русском и английском.">
+  <meta property="og:title" content="Full-stack разработчик">
+  <meta property="og:description" content="Создаю сайты, серверное ПО и плагины. От интерфейса до логики на сервере и запуска.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <title>Портфолио — Кликер 67</title>
+  <title>Full-stack разработчик</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,10 +22,10 @@
   <header class="nav" data-theme="dark">
     <a class="wordmark" href="#top">Портфолио</a>
     <nav class="nav-links" id="menu" aria-label="Разделы">
-      <a href="#work">Работа</a>
-      <a href="#approach">Подход</a>
-      <a href="#faq">Вопросы</a>
-      <a href="#contact">Почта</a>
+      <a href="#services">Направления</a>
+      <a href="#work">Продукты</a>
+      <a href="#process">Порядок</a>
+      <a href="#contact">Контакт</a>
     </nav>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -37,36 +37,51 @@
     <section class="hero" id="top" data-header="dark">
       <div class="container container-wide hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow">Портфолио · веб-игра</p>
-          <h1>Кликер 67.</h1>
-          <p class="lede">Двенадцать улучшений, восемь достижений и престиж с миллиона очков. Интерфейс на русском и английском, без фреймворка.</p>
+          <p class="eyebrow">Full-stack</p>
+          <h1>Разработчик.</h1>
+          <p class="lede">Создаю сайты, серверное ПО и плагины. От интерфейса до логики на сервере и запуска.</p>
           <div class="hero-actions">
-            <a class="btn" href="#work">Смотреть работу</a>
-            <a class="text-link on-dark" href="https://github.com/romapokotilo28-spec">Профиль GitHub
+            <a class="btn" href="#contact">Обсудить проект</a>
+            <a class="text-link on-dark" href="#work">Посмотреть продукты
               <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
-          <p class="byline">romapokotilo28-spec</p>
         </div>
-        <p class="hero-mark" aria-hidden="true">67</p>
+        <ul class="hero-works">
+          <li>
+            <span class="status status-ready">Готов</span>
+            <strong>GRTP</strong>
+            <span>RTP для Minecraft</span>
+          </li>
+          <li>
+            <span class="status">В разработке</span>
+            <strong>GWMSync</strong>
+            <span>Windows и macOS</span>
+          </li>
+          <li>
+            <span class="status">В разработке</span>
+            <strong>GNexus</strong>
+            <span>Серверы и проекты</span>
+          </li>
+        </ul>
       </div>
       <div class="container container-wide">
         <ul class="proof">
           <li>
-            <span class="proof-num">12</span>
-            <span class="proof-label">улучшений с разной ценой</span>
+            <span class="proof-num">5&nbsp;000&nbsp;₽</span>
+            <span class="proof-label">frontend, от</span>
           </li>
           <li>
-            <span class="proof-num">8</span>
-            <span class="proof-label">достижений</span>
+            <span class="proof-num">7&nbsp;500&nbsp;₽</span>
+            <span class="proof-label">backend и API, от</span>
           </li>
           <li>
-            <span class="proof-num">2</span>
-            <span class="proof-label">языка интерфейса</span>
+            <span class="proof-num">13&nbsp;000&nbsp;₽</span>
+            <span class="proof-label">сайт целиком, от</span>
           </li>
           <li>
-            <span class="proof-num">5</span>
-            <span class="proof-label">позиций в магазине</span>
+            <span class="proof-num">1&nbsp;000&nbsp;₽</span>
+            <span class="proof-label">плагин, от</span>
           </li>
         </ul>
       </div>
@@ -74,38 +89,46 @@
 
     <section class="band band-stone" data-header="light">
       <div class="container narrow" data-animate="up">
-        <p class="eyebrow">Смысл</p>
-        <h2>Игроку важно видеть рост сразу на экране.</h2>
-        <p>Клик без ответной цифры быстро надоедает. В Кликере 67 счёт, доход в секунду и следующее улучшение остаются рядом с кнопкой. Прогресс не спрятан во втором меню.</p>
+        <p class="eyebrow">Старт</p>
+        <h2>Расскажите, что нужно сделать.</h2>
+        <p>Напишите на почту. Коротко опишите задачу, платформу и желаемый срок. Если ТЗ нет, составим его вместе.</p>
+        <a class="text-link ask-link" href="#contact">Написать на почту
+          <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </section>
 
-    <section class="band band-paper" id="approach" data-header="light">
+    <section class="band band-paper" id="services" data-header="light">
       <div class="container">
         <div class="section-head" data-animate="fade">
-          <p class="eyebrow">Подход</p>
-          <h2>В игре четыре разные причины вернуться.</h2>
+          <p class="eyebrow">Направления</p>
+          <h2>Чем могу помочь.</h2>
         </div>
         <div class="bento">
           <article class="tile tile-lead">
-            <p class="tile-index">01</p>
-            <h3>Ясно.</h3>
-            <p>Счёт, скорость и цена следующего шага видны вместе. Игрок жмёт, а не ищет, куда делись очки.</p>
+            <p class="tile-index">Сайты</p>
+            <h3>Веб-сервисы.</h3>
+            <p>Лендинг, личный кабинет или полноценный сервис. Интерфейс и backend в одном проекте.</p>
+            <ul class="prices">
+              <li><span>Frontend</span><span>от 5&nbsp;000&nbsp;₽</span></li>
+              <li><span>Backend и API</span><span>от 7&nbsp;500&nbsp;₽</span></li>
+              <li><span>Сайт целиком</span><span>от 13&nbsp;000&nbsp;₽</span></li>
+            </ul>
           </article>
           <article class="tile">
-            <p class="tile-index">02</p>
-            <h3>Своя кривая у каждой покупки.</h3>
-            <p>Палец стоит от 10 очков, галактика — от двух миллионов. Множитель и омега растут быстрее остальных.</p>
+            <p class="tile-index">Сервер</p>
+            <h3>Серверное ПО.</h3>
+            <p>Сервисы для Linux, автоматизация и интеграции. Логика, которая работает за интерфейсом.</p>
           </article>
           <article class="tile">
-            <p class="tile-index">03</p>
-            <h3>Престиж с миллиона.</h3>
-            <p>На 1&nbsp;000&nbsp;000 очков прогресс можно сбросить. Постоянный бонус остаётся, шкала начинается снова.</p>
+            <p class="tile-index">Minecraft</p>
+            <h3>Плагины.</h3>
+            <p>Механики, интеграции и переработка плагинов под ваш сервер. От 1&nbsp;000&nbsp;₽.</p>
           </article>
           <article class="tile tile-line">
-            <p class="tile-index">04</p>
-            <h3>Два языка, один словарь.</h3>
-            <p>Русский и английский лежат в одной таблице строк. Подписи кнопок, магазина и достижений меняются без отдельной вёрстки.</p>
+            <p class="tile-index">Стек плагинов</p>
+            <h3>Paper, Spigot, Purpur. Velocity и BungeeCord.</h3>
+            <p>Версии с 1.16 до актуальных.</p>
           </article>
         </div>
       </div>
@@ -113,136 +136,114 @@
 
     <section class="pull" data-header="dark">
       <div class="container">
-        <p class="eyebrow">Заметка</p>
+        <p class="eyebrow">Как веду работу</p>
         <blockquote data-animate="fade">
-          <p>Одно название на иконке, в черновике и в игре.</p>
+          <p>Лично разрабатываю и веду каждый проект.</p>
         </blockquote>
+        <p class="pull-note">Большая часть опыта: задачи владельцев Minecraft-серверов.</p>
       </div>
     </section>
 
     <section class="band band-stone" id="work" data-header="light">
-      <div class="container case">
-        <div class="case-copy" data-animate="up">
-          <p class="eyebrow">Работа</p>
-          <h2>Кликер 67 не прячет прогресс в меню.</h2>
-          <p>Игра для Яндекс Игр. Кнопка 67, автодоход от бота до галактики, буст ×2 на 20 секунд и таблица лидеров. Сохранение локальное, а при SDK — в данные игрока.</p>
-          <a class="text-link" href="https://github.com/romapokotilo28-spec/clicker67">Репозиторий игры
-            <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-        <div class="device" aria-hidden="true">
-          <div class="device-screen">
-            <p class="device-name">Кликер 67</p>
-            <div class="device-orb"><span>67</span></div>
-            <p class="device-hint">Жми</p>
-            <dl class="device-stats">
-              <div><dt>Очки</dt><dd>0</dd></div>
-              <div><dt>/ сек</dt><dd>0</dd></div>
-              <div><dt>Клики</dt><dd>0</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-paper" id="specs" data-header="light">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Состав</p>
-          <h2>Коротко о том, что уже собрано.</h2>
+        <div class="section-head" data-animate="up">
+          <p class="eyebrow">Примеры работ</p>
+          <h2>Инструменты, которые делаю сам.</h2>
+          <p class="section-note">Для игровых серверов, работы между устройствами и управления проектами.</p>
         </div>
-        <dl class="specs">
-          <div>
-            <dt>Платформа</dt>
-            <dd>Яндекс Игры, черновик с тем же названием</dd>
-          </div>
-          <div>
-            <dt>Стек</dt>
-            <dd>HTML, CSS и JavaScript. Без фреймворка и без сборки</dd>
-          </div>
-          <div>
-            <dt>Клик</dt>
-            <dd>Пять усилений: от +1 до +100 за нажатие</dd>
-          </div>
-          <div>
-            <dt>Автодоход</dt>
-            <dd>Бот, фабрика, храм, спутник, галактика</dd>
-          </div>
-          <div>
-            <dt>Цель шкалы</dt>
-            <dd>10&nbsp;000&nbsp;000 очков</dd>
-          </div>
-          <div>
-            <dt>Магазин</dt>
-            <dd>Сундук, сейф, постоянный ×2, турбо-завод, отключение рекламы</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="band band-stone" data-header="light">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Ход игры</p>
-          <h2>Путь от первого клика до престижа.</h2>
-        </div>
-        <ol class="steps">
+        <ol class="works">
           <li>
-            <span class="step-index">01</span>
-            <h3>Жми</h3>
-            <p>Каждое нажатие на 67 сразу меняет счёт в шапке.</p>
+            <div class="work-name">
+              <p class="status status-ready">Готов</p>
+              <h3>GRTP</h3>
+            </div>
+            <p>Настраиваемая система RTP для Minecraft-серверов.</p>
+            <p class="work-tag">Minecraft</p>
           </li>
           <li>
-            <span class="step-index">02</span>
-            <h3>Усиливай</h3>
-            <p>Покупки клика, автодохода и множителей живут в одной вкладке.</p>
+            <div class="work-name">
+              <p class="status">В разработке</p>
+              <h3>GWMSync</h3>
+            </div>
+            <p>Работа между Windows-ПК или ноутбуком и macOS.</p>
+            <p class="work-tag">Desktop</p>
           </li>
           <li>
-            <span class="step-index">03</span>
-            <h3>Открывай</h3>
-            <p>Восемь достижений: от первого клика до империи в 10 миллионов.</p>
-          </li>
-          <li>
-            <span class="step-index">04</span>
-            <h3>Сбрасывай</h3>
-            <p>Престиж после миллиона оставляет бонус и обнуляет текущий забег.</p>
+            <div class="work-name">
+              <p class="status">В разработке</p>
+              <h3>GNexus</h3>
+            </div>
+            <p>Безопасное управление серверами и проектами.</p>
+            <p class="work-tag">Серверы</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="band band-paper" id="faq" data-header="light">
-      <div class="container faq-layout">
-        <div>
-          <p class="eyebrow">Вопросы</p>
-          <h2>Коротко о том, как это устроено.</h2>
+    <section class="band band-paper" id="process" data-header="light">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Порядок</p>
+          <h2>Как будем работать.</h2>
         </div>
-        <div class="faq">
-          <details>
-            <summary>Где лежит код игры?</summary>
-            <p>В репозитории <a href="https://github.com/romapokotilo28-spec/clicker67">clicker67</a>. Этот сайт — портфолио, не сборка самой игры.</p>
-          </details>
-          <details>
-            <summary>На каких языках интерфейс?</summary>
-            <p>Русский и английский. Строки собраны в одном словаре и переключаются вместе.</p>
-          </details>
-          <details>
-            <summary>Куда сохраняется прогресс?</summary>
-            <p>В браузер. Если открыть игру внутри Яндекс Игр и SDK доступен, те же данные пишутся игроку.</p>
-          </details>
-          <details>
-            <summary>Как работают покупки и рейтинг?</summary>
-            <p>Каталог, оплата и глобальная таблица лидеров идут через SDK Яндекс Игр. Вне платформы остаётся локальный счёт.</p>
-          </details>
+        <ol class="steps steps-3">
+          <li>
+            <span class="step-index">01</span>
+            <h3>Разберём задачу</h3>
+            <p>Обсудим логику, платформу и ограничения. Помогу составить ТЗ.</p>
+          </li>
+          <li>
+            <span class="step-index">02</span>
+            <h3>Согласуем объём</h3>
+            <p>До начала работы определим, что нужно сделать, сроки и стоимость.</p>
+          </li>
+          <li>
+            <span class="step-index">03</span>
+            <h3>Разработаю и запущу</h3>
+            <p>Соберу решение, проверю и помогу с запуском. Останусь на связи.</p>
+          </li>
+        </ol>
+        <p class="section-note process-note">Поддержка и оптимизация выполненной работы включены.</p>
+      </div>
+    </section>
+
+    <section class="band band-stone" id="budget" data-header="light">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Бюджет</p>
+          <h2>Цены на старте.</h2>
         </div>
+        <dl class="specs">
+          <div>
+            <dt>Minecraft-плагин</dt>
+            <dd>от 1&nbsp;000&nbsp;₽</dd>
+          </div>
+          <div>
+            <dt>Переработка плагина</dt>
+            <dd>от 1&nbsp;000&nbsp;₽</dd>
+          </div>
+          <div>
+            <dt>Frontend</dt>
+            <dd>от 5&nbsp;000&nbsp;₽</dd>
+          </div>
+          <div>
+            <dt>Backend</dt>
+            <dd>от 7&nbsp;500&nbsp;₽</dd>
+          </div>
+          <div>
+            <dt>Полный сайт</dt>
+            <dd>от 13&nbsp;000&nbsp;₽</dd>
+          </div>
+        </dl>
+        <p class="section-note">Итоговая стоимость зависит от задачи. Серверное ПО оцениваю отдельно.</p>
       </div>
     </section>
 
     <section class="contact" id="contact" data-header="dark">
       <div class="container" data-animate="up">
-        <p class="eyebrow">Почта</p>
-        <h2>Если нужен такой же ясный веб.</h2>
-        <p class="contact-note">Напишите на почту или откройте профиль. Отвечу по делу, без анкеты на десять полей.</p>
+        <p class="eyebrow">Контакт</p>
+        <h2>Есть задача? Давайте обсудим.</h2>
+        <p class="contact-note">Можно начать с пары предложений. Что хотите сделать, для кого и к какому сроку?</p>
         <a class="mail" href="mailto:romapokotilo28@gmail.com">romapokotilo28@gmail.com</a>
         <a class="text-link on-dark contact-secondary" href="https://github.com/romapokotilo28-spec">Открыть GitHub
           <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -254,19 +255,19 @@
   <footer class="site-footer" data-header="light">
     <div class="container footer-grid">
       <div>
-        <p class="footer-title">Портфолио</p>
+        <p class="footer-title">Направления</p>
         <ul>
-          <li><a href="#top">Наверх</a></li>
-          <li><a href="#approach">Подход</a></li>
-          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#services">Сайты</a></li>
+          <li><a href="#services">Серверное ПО</a></li>
+          <li><a href="#services">Плагины</a></li>
         </ul>
       </div>
       <div>
-        <p class="footer-title">Работа</p>
+        <p class="footer-title">Продукты</p>
         <ul>
-          <li><a href="#work">Кликер 67</a></li>
-          <li><a href="https://github.com/romapokotilo28-spec/clicker67">Репозиторий игры</a></li>
-          <li><a href="#specs">Состав</a></li>
+          <li><a href="#work">GRTP</a></li>
+          <li><a href="#work">GWMSync</a></li>
+          <li><a href="#work">GNexus</a></li>
         </ul>
       </div>
       <div>
@@ -274,12 +275,12 @@
         <ul>
           <li><a href="mailto:romapokotilo28@gmail.com">Почта</a></li>
           <li><a href="https://github.com/romapokotilo28-spec">GitHub</a></li>
-          <li><a href="#contact">Написать</a></li>
+          <li><a href="#contact">Обсудить проект</a></li>
         </ul>
       </div>
       <div>
         <p class="footer-title">Колофон</p>
-        <p class="footer-note">Набрано шрифтом Inter. Чёрный, серый фон и один синий для ссылок. © 2026</p>
+        <p class="footer-note">Сайты, сервисы и плагины. Цены на странице — стартовые. © 2026</p>
       </div>
     </div>
   </footer>
