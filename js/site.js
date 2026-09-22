@@ -62,8 +62,25 @@
     }
   });
 
+  document.querySelectorAll("[data-animate='stagger']").forEach((container) => {
+    container.querySelectorAll(":scope > *").forEach((child, index) => {
+      child.style.setProperty("--index", index);
+    });
+  });
+
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const animated = document.querySelectorAll("[data-animate]");
+  const progress = document.querySelector(".scroll-progress");
+
+  if (!motion.matches && progress && !CSS.supports("animation-timeline: scroll()")) {
+    const paint = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const value = max > 0 ? window.scrollY / max : 0;
+      progress.style.transform = `scaleX(${value})`;
+    };
+    paint();
+    window.addEventListener("scroll", paint, { passive: true });
+  }
 
   if (motion.matches) {
     animated.forEach((el) => el.classList.add("is-visible"));

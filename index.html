@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Full-stack разработчик. Сайты, серверное ПО и плагины. Примеры: GRTP, GWMSync и GNexus.">
+  <meta name="description" content="Pokotilo Roman — full-stack разработчик. Сайты и серверное ПО. Примеры: GWMSync и GNexus.">
   <meta name="theme-color" content="#000000">
-  <meta property="og:title" content="Full-stack разработчик">
-  <meta property="og:description" content="Создаю сайты, серверное ПО и плагины. От интерфейса до логики на сервере и запуска.">
+  <meta property="og:title" content="Pokotilo Roman">
+  <meta property="og:description" content="Создаю сайты и серверное ПО. От интерфейса до логики на сервере и запуска.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <title>Full-stack разработчик</title>
+  <title>Pokotilo Roman</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,10 +17,11 @@
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip" href="#content">К содержанию</a>
 
   <header class="nav" data-theme="dark">
-    <a class="wordmark" href="#top">Портфолио</a>
+    <a class="wordmark" href="#top">Pokotilo Roman</a>
     <nav class="nav-links" id="menu" aria-label="Разделы">
       <a href="#services">Направления</a>
       <a href="#work">Продукты</a>
@@ -37,10 +38,10 @@
     <section class="hero" id="top" data-header="dark">
       <div class="container container-wide hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow">Full-stack</p>
-          <h1>Разработчик.</h1>
-          <p class="lede">Создаю сайты, серверное ПО и плагины. От интерфейса до логики на сервере и запуска.</p>
-          <div class="hero-actions">
+          <p class="eyebrow hero-item">Full-stack</p>
+          <h1 class="hero-item">Pokotilo Roman</h1>
+          <p class="lede hero-item">Создаю сайты и серверное ПО. От интерфейса до логики на сервере и запуска.</p>
+          <div class="hero-actions hero-item">
             <a class="btn" href="#contact">Обсудить проект</a>
             <a class="text-link on-dark" href="#work">Посмотреть продукты
               <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -48,11 +49,6 @@
           </div>
         </div>
         <ul class="hero-works">
-          <li>
-            <span class="status status-ready">Готов</span>
-            <strong>GRTP</strong>
-            <span>RTP для Minecraft</span>
-          </li>
           <li>
             <span class="status">В разработке</span>
             <strong>GWMSync</strong>
@@ -79,10 +75,6 @@
             <span class="proof-num">13&nbsp;000&nbsp;₽</span>
             <span class="proof-label">сайт целиком, от</span>
           </li>
-          <li>
-            <span class="proof-num">1&nbsp;000&nbsp;₽</span>
-            <span class="proof-label">плагин, от</span>
-          </li>
         </ul>
       </div>
     </section>
@@ -104,7 +96,7 @@
           <p class="eyebrow">Направления</p>
           <h2>Чем могу помочь.</h2>
         </div>
-        <div class="bento">
+        <div class="bento" data-animate="stagger">
           <article class="tile tile-lead">
             <p class="tile-index">Сайты</p>
             <h3>Веб-сервисы.</h3>
@@ -120,16 +112,6 @@
             <h3>Серверное ПО.</h3>
             <p>Сервисы для Linux, автоматизация и интеграции. Логика, которая работает за интерфейсом.</p>
           </article>
-          <article class="tile">
-            <p class="tile-index">Minecraft</p>
-            <h3>Плагины.</h3>
-            <p>Механики, интеграции и переработка плагинов под ваш сервер. От 1&nbsp;000&nbsp;₽.</p>
-          </article>
-          <article class="tile tile-line">
-            <p class="tile-index">Стек плагинов</p>
-            <h3>Paper, Spigot, Purpur. Velocity и BungeeCord.</h3>
-            <p>Версии с 1.16 до актуальных.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -140,7 +122,7 @@
         <blockquote data-animate="fade">
           <p>Лично разрабатываю и веду каждый проект.</p>
         </blockquote>
-        <p class="pull-note">Большая часть опыта: задачи владельцев Minecraft-серверов.</p>
+        <p class="pull-note">От первого экрана до запуска на сервере. Поддержка остаётся после сдачи.</p>
       </div>
     </section>
 
@@ -149,17 +131,9 @@
         <div class="section-head" data-animate="up">
           <p class="eyebrow">Примеры работ</p>
           <h2>Инструменты, которые делаю сам.</h2>
-          <p class="section-note">Для игровых серверов, работы между устройствами и управления проектами.</p>
+          <p class="section-note">Для работы между устройствами и управления проектами.</p>
         </div>
-        <ol class="works">
-          <li>
-            <div class="work-name">
-              <p class="status status-ready">Готов</p>
-              <h3>GRTP</h3>
-            </div>
-            <p>Настраиваемая система RTP для Minecraft-серверов.</p>
-            <p class="work-tag">Minecraft</p>
-          </li>
+        <ol class="works" data-animate="stagger">
           <li>
             <div class="work-name">
               <p class="status">В разработке</p>
@@ -186,7 +160,7 @@
           <p class="eyebrow">Порядок</p>
           <h2>Как будем работать.</h2>
         </div>
-        <ol class="steps steps-3">
+        <ol class="steps steps-3" data-animate="stagger">
           <li>
             <span class="step-index">01</span>
             <h3>Разберём задачу</h3>
@@ -214,14 +188,6 @@
           <h2>Цены на старте.</h2>
         </div>
         <dl class="specs">
-          <div>
-            <dt>Minecraft-плагин</dt>
-            <dd>от 1&nbsp;000&nbsp;₽</dd>
-          </div>
-          <div>
-            <dt>Переработка плагина</dt>
-            <dd>от 1&nbsp;000&nbsp;₽</dd>
-          </div>
           <div>
             <dt>Frontend</dt>
             <dd>от 5&nbsp;000&nbsp;₽</dd>
@@ -259,13 +225,12 @@
         <ul>
           <li><a href="#services">Сайты</a></li>
           <li><a href="#services">Серверное ПО</a></li>
-          <li><a href="#services">Плагины</a></li>
+          <li><a href="#process">Порядок</a></li>
         </ul>
       </div>
       <div>
         <p class="footer-title">Продукты</p>
         <ul>
-          <li><a href="#work">GRTP</a></li>
           <li><a href="#work">GWMSync</a></li>
           <li><a href="#work">GNexus</a></li>
         </ul>
@@ -280,7 +245,7 @@
       </div>
       <div>
         <p class="footer-title">Колофон</p>
-        <p class="footer-note">Сайты, сервисы и плагины. Цены на странице — стартовые. © 2026</p>
+        <p class="footer-note">Pokotilo Roman. Сайты и серверное ПО. Цены на странице — стартовые. © 2026</p>
       </div>
     </div>
   </footer>

@@ -194,10 +194,24 @@ summary {
 }
 
 .wordmark {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  height: 2px;
+  background: #2997ff;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
 }
 
 .nav-links {
@@ -288,7 +302,7 @@ summary {
 
 .hero h1 {
   margin-top: 0.75rem;
-  font-size: clamp(3.25rem, 6.6vw, 6rem);
+  font-size: clamp(2.75rem, 5.6vw, 4.75rem);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.02;
@@ -385,7 +399,7 @@ summary {
 
 .proof {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem 2rem;
   padding-block: 1.5rem 2rem;
   border-top: 1px solid var(--line-dark);
@@ -522,11 +536,10 @@ summary {
 }
 
 .tile-lead {
-  grid-row: 1 / span 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 26rem;
+  min-height: 0;
   padding: 2.5rem;
   border-radius: 1.75rem;
   background: #1d1d1f;
@@ -1122,6 +1135,68 @@ summary {
     opacity: 1;
     transform: none;
   }
+
+  .js [data-animate="stagger"] > * {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  .js [data-animate="stagger"].is-visible > * {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.55s var(--ease-out-expo),
+      transform 0.55s var(--ease-out-expo);
+    transition-delay: calc(var(--index, 0) * 80ms);
+  }
+
+  .js .hero-item,
+  .js .hero-works li {
+    opacity: 0;
+    animation: rise 0.6s var(--ease-out-expo) forwards;
+  }
+
+  .js .hero-item:nth-child(1) { animation-delay: 40ms; }
+  .js .hero-item:nth-child(2) { animation-delay: 120ms; }
+  .js .hero-item:nth-child(3) { animation-delay: 200ms; }
+  .js .hero-item:nth-child(4) { animation-delay: 280ms; }
+
+  .js .hero-works li:nth-child(1) { animation-delay: 360ms; }
+  .js .hero-works li:nth-child(2) { animation-delay: 460ms; }
+
+  .js .proof li {
+    opacity: 0;
+    animation: rise 0.55s var(--ease-out-expo) forwards;
+  }
+
+  .js .proof li:nth-child(1) { animation-delay: 420ms; }
+  .js .proof li:nth-child(2) { animation-delay: 500ms; }
+  .js .proof li:nth-child(3) { animation-delay: 580ms; }
+
+  .js .scroll-progress {
+    animation: grow-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .js .tile {
+    transition: transform 250ms var(--ease-out-quart);
+  }
+
+  .js .tile:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes grow-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
