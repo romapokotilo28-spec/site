@@ -288,10 +288,8 @@ summary {
 
 .hero-inner {
   flex: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  display: flex;
   align-items: center;
-  gap: 1.5rem;
 }
 
 .hero-copy {
@@ -326,71 +324,6 @@ summary {
   margin-top: 1.75rem;
   color: var(--on-dark-soft);
   font-size: 0.8125rem;
-}
-
-.hero-works {
-  width: min(100%, 28rem);
-  justify-self: end;
-  margin: 0;
-}
-
-.hero-works li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 1rem;
-  align-items: center;
-  padding-block: 1.125rem;
-  border-top: 1px solid var(--line-dark);
-}
-
-.hero-works li:last-child {
-  border-bottom: 1px solid var(--line-dark);
-}
-
-.hero-works strong {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
-
-.hero-works li > span:last-child {
-  grid-column: 2;
-  color: var(--on-dark-soft);
-  font-size: 0.875rem;
-}
-
-.status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 1.75rem;
-  padding: 0 0.625rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--ink-soft);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-.status-ready {
-  border-color: transparent;
-  background: #1d1d1f;
-  color: var(--on-dark);
-}
-
-.hero-works .status {
-  grid-row: 1 / span 2;
-  border-color: var(--line-dark);
-  color: var(--on-dark-soft);
-}
-
-.hero-works .status-ready {
-  border-color: transparent;
-  background: var(--on-dark);
-  color: var(--black);
 }
 
 .proof-num {
@@ -584,40 +517,6 @@ summary {
   max-width: 42rem;
   margin-top: 1rem;
   color: #424245;
-}
-
-.works {
-  margin-top: 2.5rem;
-}
-
-.works li {
-  display: grid;
-  grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 1.6fr) auto;
-  gap: 0.75rem 2rem;
-  align-items: center;
-  padding-block: 1.75rem;
-  border-top: 1px solid var(--line);
-}
-
-.works li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.works h3 {
-  margin: 0.4rem 0 0;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.works li > p {
-  margin: 0;
-}
-
-.work-tag {
-  color: var(--ink-soft);
-  font-size: 0.875rem;
 }
 
 .steps-3 {
@@ -1024,16 +923,6 @@ summary {
     min-height: 0;
   }
 
-  .hero-works {
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  .works li {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
   .proof,
   .steps,
   .footer-grid,
@@ -1150,8 +1039,7 @@ summary {
     transition-delay: calc(var(--index, 0) * 80ms);
   }
 
-  .js .hero-item,
-  .js .hero-works li {
+  .js .hero-item {
     opacity: 0;
     animation: rise 0.6s var(--ease-out-expo) forwards;
   }
@@ -1160,9 +1048,6 @@ summary {
   .js .hero-item:nth-child(2) { animation-delay: 120ms; }
   .js .hero-item:nth-child(3) { animation-delay: 200ms; }
   .js .hero-item:nth-child(4) { animation-delay: 280ms; }
-
-  .js .hero-works li:nth-child(1) { animation-delay: 360ms; }
-  .js .hero-works li:nth-child(2) { animation-delay: 460ms; }
 
   .js .proof li {
     opacity: 0;
