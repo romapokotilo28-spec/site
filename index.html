@@ -14,7 +14,20 @@
   <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    (function () {
+      var allowed = { apple: 1, paper: 1, night: 1 };
+      var style = "apple";
+      try {
+        var fromUrl = new URLSearchParams(location.search).get("style");
+        var saved = localStorage.getItem("site-style");
+        if (allowed[fromUrl]) style = fromUrl;
+        else if (allowed[saved]) style = saved;
+      } catch (error) {}
+      document.documentElement.dataset.style = style;
+    })();
+  </script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -28,6 +41,20 @@
       <a href="#budget">Цены</a>
       <a href="#contact">Контакт</a>
     </nav>
+    <div class="style-switch" role="radiogroup" aria-label="Стиль сайта">
+      <button type="button" role="radio" data-style="apple" aria-checked="true">
+        <span class="swatch swatch-apple" aria-hidden="true"></span>
+        <span class="style-name">Apple</span>
+      </button>
+      <button type="button" role="radio" data-style="paper" aria-checked="false" tabindex="-1">
+        <span class="swatch swatch-paper" aria-hidden="true"></span>
+        <span class="style-name">Бумага</span>
+      </button>
+      <button type="button" role="radio" data-style="night" aria-checked="false" tabindex="-1">
+        <span class="swatch swatch-night" aria-hidden="true"></span>
+        <span class="style-name">Ночь</span>
+      </button>
+    </div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
       <span class="visually-hidden">Меню</span>
