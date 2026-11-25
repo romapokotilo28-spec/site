@@ -17,7 +17,7 @@
   <script>
     document.documentElement.classList.add("js");
     (function () {
-      var allowed = { apple: 1, paper: 1, night: 1 };
+      var allowed = { apple: 1, paper: 1, night: 1, move: 1 };
       var style = "apple";
       try {
         var fromUrl = new URLSearchParams(location.search).get("style");
@@ -53,6 +53,10 @@
       <button type="button" role="radio" data-style="night" aria-checked="false" tabindex="-1">
         <span class="swatch swatch-night" aria-hidden="true"></span>
         <span class="style-name">Ночь</span>
+      </button>
+      <button type="button" role="radio" data-style="move" aria-checked="false" tabindex="-1">
+        <span class="swatch swatch-move" aria-hidden="true"></span>
+        <span class="style-name">Двигай</span>
       </button>
     </div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
@@ -278,6 +282,11 @@
       </div>
     </div>
   </footer>
+
+  <div class="drag-hint" hidden>
+    <p>Тяните мышью. На телефоне — за метку.</p>
+    <button class="drag-reset" type="button">Собрать</button>
+  </div>
 
   <script src="js/site.js"></script>
 </body>

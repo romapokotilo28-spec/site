@@ -7,7 +7,8 @@
   const footer = document.querySelector(".site-footer");
   let currentTheme = "dark";
 
-  const styles = ["apple", "paper", "night"];
+  const styles = ["apple", "paper", "night", "move"];
+  let dragReady = false;
   const styleSwitch = document.querySelector(".style-switch");
   const styleButtons = styleSwitch ? Array.from(styleSwitch.querySelectorAll("[data-style]")) : [];
 
@@ -30,6 +31,7 @@
       localStorage.setItem("site-style", name);
     } catch (error) {}
     paintChrome();
+    syncDragMode();
   }
 
   function applyTheme(theme) {
@@ -120,6 +122,155 @@
     paintClock();
     window.setInterval(paintClock, 1000);
   }
+
+  const dragSelectors = [
+    ".hero-copy",
+    ".stage",
+    ".proof li",
+    "#craft .narrow",
+    ".craft li",
+    ".tile",
+    ".pull blockquote",
+    ".steps li",
+    ".specs > div",
+    "#contact .container",
+    ".footer-grid > div",
+  ];
+  const tilts = [-1.6, 1.3, -1.1, 1.8, -1.4, 0.9, 1.5, -0.7, 1.2, -1.8, 0.8, -1.2, 1.6, -0.5, 1.1, -1.5, 0.6];
+  const dragItems = [];
+  dragSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      if (el.dataset.dragId) return;
+      el.dataset.dragId = selector + ":" + index;
+      dragItems.push(el);
+    });
+  });
+
+  const hint = document.querySelector(".drag-hint");
+  const resetButton = document.querySelector(".drag-reset");
+  let dragPositions = {};
+  try {
+    dragPositions = JSON.parse(localStorage.getItem("site-drag") || "{}");
+  } catch (error) {
+    dragPositions = {};
+  }
+
+  function rememberDrag() {
+    try {
+      localStorage.setItem("site-drag", JSON.stringify(dragPositions));
+    } catch (error) {}
+  }
+
+  function readOffset(el) {
+    const raw = (el.style.translate || "0 0").replace(/px/g, "").trim().split(/\s+/);
+    return { x: Number(raw[0]) || 0, y: Number(raw[1]) || 0 };
+  }
+
+  function syncDragMode() {
+    if (!dragReady) return;
+    const on = document.documentElement.dataset.style === "move";
+    if (hint) hint.hidden = !on;
+    dragItems.forEach((el, index) => {
+      el.classList.toggle("drag-item", on);
+      if (!on) {
+        el.style.translate = "";
+        el.style.rotate = "";
+        el.classList.remove("is-dragging");
+        return;
+      }
+      if (!el.querySelector(":scope > .drag-grip")) {
+        const grip = document.createElement("button");
+        grip.type = "button";
+        grip.className = "drag-grip";
+        grip.setAttribute("aria-label", "Перетащить блок");
+        grip.innerHTML = "<span></span>";
+        el.appendChild(grip);
+      }
+      el.style.rotate = tilts[index % tilts.length] + "deg";
+      const saved = dragPositions[el.dataset.dragId];
+      el.style.translate = saved ? saved.x + "px " + saved.y + "px" : "0 0";
+    });
+  }
+
+  let drag = null;
+
+  document.addEventListener("pointerdown", (event) => {
+    if (document.documentElement.dataset.style !== "move" || event.button > 0) return;
+    const item = event.target.closest(".drag-item");
+    if (!item || (hint && hint.contains(event.target))) return;
+    const grip = event.target.closest(".drag-grip");
+    if (event.pointerType !== "mouse" && !grip) return;
+    const origin = readOffset(item);
+    drag = {
+      item,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      x: origin.x,
+      y: origin.y,
+      moved: false,
+    };
+    if (grip) event.preventDefault();
+  });
+
+  document.addEventListener("pointermove", (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    const dx = event.clientX - drag.startX;
+    const dy = event.clientY - drag.startY;
+    if (!drag.moved && Math.hypot(dx, dy) < 6) return;
+    if (!drag.moved) {
+      drag.moved = true;
+      drag.item.classList.add("is-dragging");
+      try {
+        if (!drag.item.hasPointerCapture(event.pointerId)) {
+          drag.item.setPointerCapture(event.pointerId);
+        }
+      } catch (error) {}
+    }
+    drag.item.style.translate = drag.x + dx + "px " + (drag.y + dy) + "px";
+  });
+
+  function endDrag(event) {
+    if (!drag || (event && event.pointerId !== drag.pointerId)) return;
+    const item = drag.item;
+    if (drag.moved) {
+      const offset = readOffset(item);
+      dragPositions[item.dataset.dragId] = offset;
+      rememberDrag();
+      item.dataset.justDragged = "1";
+    }
+    item.classList.remove("is-dragging");
+    drag = null;
+  }
+
+  document.addEventListener("pointerup", endDrag);
+  document.addEventListener("pointercancel", endDrag);
+
+  document.addEventListener("click", (event) => {
+    const item = event.target.closest(".drag-item");
+    if (!item || item.dataset.justDragged !== "1") return;
+    event.preventDefault();
+    event.stopPropagation();
+    item.dataset.justDragged = "0";
+  }, true);
+
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      dragPositions = {};
+      rememberDrag();
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      dragItems.forEach((el) => {
+        if (!reduce) el.classList.add("is-resetting");
+        el.style.translate = "0 0";
+      });
+      window.setTimeout(() => {
+        dragItems.forEach((el) => el.classList.remove("is-resetting"));
+      }, 480);
+    });
+  }
+
+  dragReady = true;
+  syncDragMode();
 
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const animated = document.querySelectorAll("[data-animate]");
