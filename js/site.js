@@ -105,6 +105,22 @@
     });
   });
 
+  const clock = document.querySelector("[data-clock]");
+  if (clock) {
+    const format = new Intl.DateTimeFormat("ru-RU", {
+      timeZone: "Europe/Moscow",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const paintClock = () => {
+      const now = new Date();
+      clock.textContent = format.format(now);
+      clock.setAttribute("datetime", now.toISOString());
+    };
+    paintClock();
+    window.setInterval(paintClock, 1000);
+  }
+
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const animated = document.querySelectorAll("[data-animate]");
   const progress = document.querySelector(".scroll-progress");

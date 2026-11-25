@@ -75,6 +75,22 @@
             </a>
           </div>
         </div>
+        <aside class="stage" aria-label="Сейчас">
+          <div class="stage-bar">
+            <p class="stage-kicker">Беру задачи</p>
+            <p class="stage-clock">
+              <span class="visually-hidden">Время в Москве </span>
+              <time data-clock>--:--</time>
+              <span class="stage-zone">МСК</span>
+            </p>
+          </div>
+          <p class="stage-title">От экрана до сервера.</p>
+          <ol class="stage-list">
+            <li><a href="#craft"><span>01</span> Интерфейс</a></li>
+            <li><a href="#craft"><span>02</span> Логика</a></li>
+            <li><a href="#services"><span>03</span> Запуск</a></li>
+          </ol>
+        </aside>
       </div>
       <div class="container container-wide">
         <ul class="proof">
@@ -94,14 +110,38 @@
       </div>
     </section>
 
-    <section class="band band-stone" data-header="light">
-      <div class="container narrow" data-animate="up">
-        <p class="eyebrow">Старт</p>
-        <h2>Расскажите, что нужно сделать.</h2>
-        <p>Напишите на почту. Коротко опишите задачу, платформу и желаемый срок. Если ТЗ нет, составим его вместе.</p>
-        <a class="text-link ask-link" href="#contact">Написать на почту
-          <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+    <section class="band band-stone" id="craft" data-header="light">
+      <div class="container intro-grid">
+        <div class="narrow" data-animate="up">
+          <p class="eyebrow">Старт</p>
+          <h2>Расскажите, что нужно сделать.</h2>
+          <p>Напишите на почту. Коротко опишите задачу, платформу и желаемый срок. Если ТЗ нет, составим его вместе.</p>
+          <a class="text-link ask-link" href="#contact">Написать на почту
+            <svg class="chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M4 2.2 7.8 6 4 9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <ul class="craft" data-animate="stagger">
+          <li>
+            <span>01</span>
+            <h3>Интерфейсы</h3>
+            <p>Экраны, которые понятны без инструкции.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>API</h3>
+            <p>Серверная логика, с которой говорит интерфейс.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Автоматизация</h3>
+            <p>Скрипты и сервисы для Linux.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <h3>Запуск</h3>
+            <p>Проверка, выкладка и поддержка после сдачи.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -212,6 +252,7 @@
         <ul>
           <li><a href="#services">Сайты</a></li>
           <li><a href="#services">Серверное ПО</a></li>
+          <li><a href="#craft">Умения</a></li>
           <li><a href="#process">Порядок</a></li>
         </ul>
       </div>
