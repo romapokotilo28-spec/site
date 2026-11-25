@@ -1394,6 +1394,32 @@ summary {
   background: linear-gradient(135deg, #f6c453 42%, #5b4dff 42% 70%, #fffdf8 70%);
 }
 
+.swatch-windows {
+  border-radius: 2px;
+  background:
+    linear-gradient(#4cc2ff, #4cc2ff) 0 0 / 50% 50% no-repeat,
+    linear-gradient(#7fba00, #7fba00) 100% 0 / 50% 50% no-repeat,
+    linear-gradient(#ffb900, #ffb900) 0 100% / 50% 50% no-repeat,
+    linear-gradient(#f25022, #f25022) 100% 100% / 50% 50% no-repeat;
+}
+
+.swatch-macos {
+  background: linear-gradient(90deg, #ff5f57 0 33%, #febc2e 33% 66%, #28c840 66%);
+}
+
+.os-clock {
+  display: none;
+  margin-left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.dock {
+  display: none;
+}
+
 html[data-style="paper"] {
   --font-display: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, "Times New Roman", serif;
   --ink: #241910;
@@ -1816,5 +1842,570 @@ html[data-style="move"] .drag-item.is-dragging .drag-grip {
 
   html[data-style="move"] .hero {
     padding-top: calc(var(--nav-h) + 4.75rem);
+  }
+}
+
+html[data-style="windows"],
+html[data-style="macos"] {
+  overflow-x: clip;
+  --section-lg: 1.35rem;
+  --section-md: 1.35rem;
+  --section-sm: 1.15rem;
+  --ink: #1d1d1f;
+  --ink-soft: #6e6e73;
+  --body-soft: #424245;
+  --paper: transparent;
+  --stone: transparent;
+  --accent: #0066cc;
+  --accent-bright: #0066cc;
+  --accent-fill: #0066cc;
+  --accent-fill-hover: #0077ed;
+  --on-accent: #fff;
+  --on-accent-hover: #fff;
+  --btn-border: transparent;
+  --line: rgba(0, 0, 0, 0.1);
+  --line-dark: rgba(0, 0, 0, 0.1);
+  --price-line: rgba(255, 255, 255, 0.22);
+  --radius-btn: 999px;
+  --radius-tile: 0.9rem;
+  --radius-tile-lead: 0.9rem;
+  --stage-line: rgba(0, 0, 0, 0.1);
+  --stage-hover: #0066cc;
+  --btn-shadow: none;
+  background: #071427;
+}
+
+html[data-style="windows"] body,
+html[data-style="macos"] body {
+  min-height: 100vh;
+  background-color: #071427;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+html[data-style="windows"] body {
+  background-image:
+    radial-gradient(900px 560px at 12% 18%, rgba(126, 200, 255, 0.95), transparent 60%),
+    radial-gradient(760px 620px at 82% 8%, rgba(192, 132, 252, 0.85), transparent 58%),
+    radial-gradient(680px 520px at 74% 86%, rgba(251, 113, 133, 0.75), transparent 60%),
+    linear-gradient(165deg, #1d4ed8 0%, #1e1b4b 46%, #0f172a 100%);
+}
+
+html[data-style="macos"] body {
+  background-image:
+    radial-gradient(820px 520px at 18% 88%, rgba(251, 146, 60, 0.9), transparent 58%),
+    radial-gradient(900px 640px at 84% 16%, rgba(56, 189, 248, 0.9), transparent 60%),
+    radial-gradient(640px 480px at 48% 42%, rgba(167, 139, 250, 0.75), transparent 62%),
+    linear-gradient(180deg, #312e81 0%, #1e1b4b 48%, #172554 100%);
+}
+
+html[data-style="windows"] .scroll-progress,
+html[data-style="macos"] .scroll-progress {
+  display: none;
+}
+
+html[data-style="windows"] .hero,
+html[data-style="macos"] .hero,
+html[data-style="windows"] .band,
+html[data-style="macos"] .band,
+html[data-style="windows"] .pull,
+html[data-style="macos"] .pull,
+html[data-style="windows"] .contact,
+html[data-style="macos"] .contact,
+html[data-style="windows"] .site-footer,
+html[data-style="macos"] .site-footer {
+  position: relative;
+  min-height: 0;
+  margin: 0;
+  padding-top: 0;
+  overflow: visible;
+  color: #1d1d1f;
+  background-color: rgba(255, 255, 255, 0.78);
+  background-image: none;
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+}
+
+html[data-style="windows"] [data-window]::before,
+html[data-style="macos"] [data-window]::before {
+  content: attr(data-window);
+  display: block;
+  height: 38px;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: #1d1d1f;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 38px;
+  text-transform: none;
+}
+
+html[data-style="windows"] [data-window]::before {
+  padding-right: 92px;
+}
+
+html[data-style="windows"] [data-window]::after {
+  content: "—   □   ×";
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 3;
+  height: 38px;
+  color: #3a3a3c;
+  font-size: 13px;
+  line-height: 38px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+html[data-style="macos"] [data-window] {
+  border-radius: 12px;
+}
+
+html[data-style="macos"] [data-window]::before {
+  text-align: center;
+  font-size: 13px;
+  background-image:
+    radial-gradient(circle at 18px 50%, #ff5f57 5px, transparent 5.5px),
+    radial-gradient(circle at 36px 50%, #febc2e 5px, transparent 5.5px),
+    radial-gradient(circle at 54px 50%, #28c840 5px, transparent 5.5px);
+  background-repeat: no-repeat;
+}
+
+html[data-style="windows"] main,
+html[data-style="macos"] main {
+  width: min(1120px, calc(100% - 28px));
+  margin: 16px auto 0;
+  padding-bottom: 0;
+}
+
+html[data-style="windows"] .site-footer {
+  width: min(920px, calc(100% - 28px));
+  margin-inline: auto;
+}
+
+html[data-style="macos"] .site-footer {
+  width: min(1120px, calc(100% - 28px));
+  margin-inline: auto;
+}
+
+html[data-style="windows"] .site-footer {
+  margin-bottom: 78px;
+}
+
+html[data-style="macos"] .site-footer {
+  margin-top: 20px;
+  margin-bottom: 120px;
+}
+
+html[data-style="windows"] main {
+  display: block;
+  width: min(920px, calc(100% - 28px));
+}
+
+html[data-style="windows"] .hero,
+html[data-style="windows"] #craft,
+html[data-style="windows"] #services,
+html[data-style="windows"] .pull,
+html[data-style="windows"] #process,
+html[data-style="windows"] #budget,
+html[data-style="windows"] #contact {
+  margin-bottom: 14px;
+}
+
+html[data-style="macos"] main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: calc(var(--nav-h) + 14px);
+}
+
+html[data-style="macos"] .hero,
+html[data-style="macos"] #services,
+html[data-style="macos"] .pull,
+html[data-style="macos"] .site-footer {
+  grid-column: 1 / -1;
+}
+
+html[data-style="windows"] .intro-grid,
+html[data-style="macos"] .intro-grid {
+  display: block;
+}
+
+html[data-style="windows"] .hero,
+html[data-style="macos"] .hero {
+  display: block;
+  height: auto;
+}
+
+html[data-style="windows"] .container,
+html[data-style="macos"] .container {
+  width: 100%;
+  padding-inline: 1.15rem;
+}
+
+html[data-style="windows"] .hero-inner,
+html[data-style="macos"] .hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.8fr);
+  gap: 1.25rem 2rem;
+  align-items: center;
+}
+
+html[data-style="windows"] .hero-copy,
+html[data-style="macos"] .hero-copy {
+  padding-block: 1.1rem 0.35rem;
+}
+
+html[data-style="windows"] .stage,
+html[data-style="macos"] .stage {
+  width: 100%;
+  margin-top: 0.35rem;
+  color: #1d1d1f;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html[data-style="windows"] .stage-title,
+html[data-style="macos"] .stage-title,
+html[data-style="windows"] .stage-kicker,
+html[data-style="macos"] .stage-kicker,
+html[data-style="windows"] .stage-list a,
+html[data-style="macos"] .stage-list a {
+  color: #1d1d1f;
+}
+
+html[data-style="windows"] .lede,
+html[data-style="macos"] .lede,
+html[data-style="windows"] .proof-label,
+html[data-style="macos"] .proof-label,
+html[data-style="windows"] .pull-note,
+html[data-style="macos"] .pull-note,
+html[data-style="windows"] .contact-note,
+html[data-style="macos"] .contact-note,
+html[data-style="windows"] .stage-clock,
+html[data-style="macos"] .stage-clock,
+html[data-style="windows"] .stage-list a span,
+html[data-style="macos"] .stage-list a span,
+html[data-style="windows"] .pull .eyebrow,
+html[data-style="macos"] .pull .eyebrow,
+html[data-style="windows"] .contact .eyebrow,
+html[data-style="macos"] .contact .eyebrow {
+  color: #6e6e73;
+}
+
+html[data-style="windows"] .text-link.on-dark,
+html[data-style="macos"] .text-link.on-dark,
+html[data-style="windows"] .mail,
+html[data-style="macos"] .mail {
+  color: #0066cc;
+}
+
+html[data-style="windows"] .proof,
+html[data-style="macos"] .proof {
+  border-top-color: rgba(0, 0, 0, 0.1);
+  padding-block: 0.85rem 1.1rem;
+}
+
+html[data-style="windows"] .tile-lead,
+html[data-style="macos"] .tile-lead,
+html[data-style="windows"] .tile-lead h3,
+html[data-style="macos"] .tile-lead h3 {
+  color: #f5f5f7;
+}
+
+html[data-style="windows"] .tile-lead p,
+html[data-style="windows"] .tile-lead .tile-index,
+html[data-style="macos"] .tile-lead p,
+html[data-style="macos"] .tile-lead .tile-index {
+  color: rgba(245, 245, 247, 0.78);
+}
+
+html[data-style="windows"] .nav {
+  top: auto;
+  bottom: 0;
+  height: 52px;
+  color: #1a1a1a;
+  border: 0;
+  justify-content: flex-start;
+}
+
+html[data-style="windows"] .nav::before {
+  background: rgba(243, 243, 243, 0.78);
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+}
+
+html[data-style="windows"] .wordmark::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: -3px;
+  background:
+    linear-gradient(#4cc2ff, #4cc2ff) 0 0 / 7px 7px no-repeat,
+    linear-gradient(#7fba00, #7fba00) 9px 0 / 7px 7px no-repeat,
+    linear-gradient(#ffb900, #ffb900) 0 9px / 7px 7px no-repeat,
+    linear-gradient(#f25022, #f25022) 9px 9px / 7px 7px no-repeat;
+}
+
+html[data-style="macos"] {
+  --nav-h: 1.7rem;
+  --theme-dark: #1e1b4b;
+  --theme-light: #312e81;
+}
+
+html[data-style="windows"] {
+  --theme-dark: #1d4ed8;
+  --theme-light: #1e1b4b;
+}
+
+html[data-style="macos"] .nav {
+  height: var(--nav-h);
+  color: #f5f5f7;
+  border: 0;
+}
+
+html[data-style="macos"] .nav::before {
+  background: rgba(20, 16, 40, 0.55);
+  border: 0;
+}
+
+html[data-style="macos"] .nav-links a,
+html[data-style="macos"] .wordmark,
+html[data-style="macos"] .os-clock {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 1;
+}
+
+html[data-style="windows"] .os-clock,
+html[data-style="macos"] .os-clock {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-style="windows"] .style-switch,
+html[data-style="macos"] .style-switch {
+  margin-left: auto;
+}
+
+html[data-style="windows"] .style-switch button,
+html[data-style="macos"] .style-switch button {
+  padding-inline: 0.4rem;
+}
+
+html[data-style="windows"] .swatch,
+html[data-style="macos"] .swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+html[data-style="windows"] .os-clock {
+  margin-left: 0.7rem;
+}
+
+html[data-style="macos"] .dock {
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  z-index: 45;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(22px) saturate(1.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  translate: -50% 0;
+}
+
+html[data-style="macos"] .dock a {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+html[data-style="macos"] .dock a:nth-child(1) { background: linear-gradient(180deg, #60a5fa, #2563eb); }
+html[data-style="macos"] .dock a:nth-child(2) { background: linear-gradient(180deg, #c4b5fd, #7c3aed); }
+html[data-style="macos"] .dock a:nth-child(3) { background: linear-gradient(180deg, #86efac, #16a34a); }
+html[data-style="macos"] .dock a:nth-child(4) { background: linear-gradient(180deg, #fde68a, #d97706); }
+html[data-style="macos"] .dock a:nth-child(5) { background: linear-gradient(180deg, #fda4af, #e11d48); }
+
+html[data-style="macos"] .dock a span {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+html[data-style="windows"] .drag-hint,
+html[data-style="macos"] .drag-hint {
+  top: auto;
+  right: 1rem;
+  bottom: 70px;
+  left: auto;
+  height: auto;
+  max-width: min(26rem, calc(100% - 1.5rem));
+}
+
+html[data-style="macos"] .drag-hint {
+  bottom: 88px;
+}
+
+html[data-style="windows"] .style-name,
+html[data-style="macos"] .style-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+html[data-style="windows"] .drag-grip,
+html[data-style="macos"] .drag-grip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: auto;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px 12px 0 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: grab;
+}
+
+html[data-style="windows"] .drag-grip span,
+html[data-style="macos"] .drag-grip span {
+  display: none;
+}
+
+html[data-style="windows"] .drag-item,
+html[data-style="macos"] .drag-item {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-style="windows"] .drag-item.is-dragging,
+html[data-style="macos"] .drag-item.is-dragging {
+  z-index: 30;
+  cursor: grabbing;
+}
+
+html[data-style="windows"] .drag-item.is-resetting,
+html[data-style="macos"] .drag-item.is-resetting {
+  transition: translate 460ms var(--ease-out-expo);
+}
+
+@media (min-width: 48rem) {
+  html[data-style="windows"] .nav-links,
+  html[data-style="macos"] .nav-links {
+    position: absolute;
+    left: 50%;
+    margin-left: 0;
+    translate: -50% 0;
+  }
+
+  html[data-style="windows"] .nav-links a {
+    min-height: 32px;
+    padding: 0 0.7rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.45);
+    font-size: 12px;
+    opacity: 1;
+  }
+
+  html[data-style="windows"] .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  html[data-style="windows"] main,
+  html[data-style="macos"] main {
+    display: block;
+    width: min(100% - 20px, 1120px);
+  }
+
+  html[data-style="windows"] .hero,
+  html[data-style="windows"] #craft,
+  html[data-style="windows"] #contact,
+  html[data-style="windows"] #services,
+  html[data-style="windows"] .pull,
+  html[data-style="windows"] #process,
+  html[data-style="windows"] #budget,
+  html[data-style="windows"] .site-footer {
+    grid-column: auto;
+    grid-row: auto;
+    margin-bottom: 12px;
+  }
+
+  html[data-style="macos"] .hero,
+  html[data-style="macos"] #craft,
+  html[data-style="macos"] #contact,
+  html[data-style="macos"] #services,
+  html[data-style="macos"] .pull,
+  html[data-style="macos"] #process,
+  html[data-style="macos"] #budget,
+  html[data-style="macos"] .site-footer {
+    margin-bottom: 14px;
+  }
+
+  html[data-style="windows"].js .nav-links {
+    inset: 0 0 52px 0;
+  }
+
+  html[data-style="macos"].js .nav-links {
+    inset: var(--nav-h) 0 76px 0;
+  }
+
+  html[data-style="macos"] .dock {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  html[data-style="macos"] .dock a {
+    width: 44px;
+    height: 44px;
+  }
+
+  html[data-style="windows"] .hero-inner,
+  html[data-style="macos"] .hero-inner {
+    display: block;
+  }
+
+  html[data-style="windows"] .drag-hint,
+  html[data-style="macos"] .drag-hint {
+    top: auto;
+    left: auto;
+    right: 0.6rem;
+    bottom: 62px;
+    max-width: 12.5rem;
   }
 }

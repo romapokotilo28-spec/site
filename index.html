@@ -17,7 +17,7 @@
   <script>
     document.documentElement.classList.add("js");
     (function () {
-      var allowed = { apple: 1, paper: 1, night: 1, move: 1 };
+      var allowed = { apple: 1, paper: 1, night: 1, move: 1, windows: 1, macos: 1 };
       var style = "apple";
       try {
         var fromUrl = new URLSearchParams(location.search).get("style");
@@ -58,7 +58,16 @@
         <span class="swatch swatch-move" aria-hidden="true"></span>
         <span class="style-name">Двигай</span>
       </button>
+      <button type="button" role="radio" data-style="windows" aria-checked="false" tabindex="-1">
+        <span class="swatch swatch-windows" aria-hidden="true"></span>
+        <span class="style-name">Win</span>
+      </button>
+      <button type="button" role="radio" data-style="macos" aria-checked="false" tabindex="-1">
+        <span class="swatch swatch-macos" aria-hidden="true"></span>
+        <span class="style-name">Mac</span>
+      </button>
     </div>
+    <time class="os-clock" data-clock>--:--</time>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
       <span class="visually-hidden">Меню</span>
@@ -66,7 +75,7 @@
   </header>
 
   <main id="content">
-    <section class="hero" id="top" data-header="dark">
+    <section class="hero" id="top" data-header="dark" data-window="Виджеты">
       <div class="container container-wide hero-inner">
         <div class="hero-copy">
           <p class="eyebrow hero-item">Full-stack</p>
@@ -114,7 +123,7 @@
       </div>
     </section>
 
-    <section class="band band-stone" id="craft" data-header="light">
+    <section class="band band-stone" id="craft" data-header="light" data-window="Старт">
       <div class="container intro-grid">
         <div class="narrow" data-animate="up">
           <p class="eyebrow">Старт</p>
@@ -149,7 +158,7 @@
       </div>
     </section>
 
-    <section class="band band-paper" id="services" data-header="light">
+    <section class="band band-paper" id="services" data-header="light" data-window="Направления">
       <div class="container">
         <div class="section-head" data-animate="fade">
           <p class="eyebrow">Направления</p>
@@ -175,7 +184,7 @@
       </div>
     </section>
 
-    <section class="pull" data-header="dark">
+    <section class="pull" data-header="dark" data-window="Заметка">
       <div class="container">
         <p class="eyebrow">Как веду работу</p>
         <blockquote data-animate="fade">
@@ -185,7 +194,7 @@
       </div>
     </section>
 
-    <section class="band band-paper" id="process" data-header="light">
+    <section class="band band-paper" id="process" data-header="light" data-window="Порядок">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Порядок</p>
@@ -212,7 +221,7 @@
       </div>
     </section>
 
-    <section class="band band-stone" id="budget" data-header="light">
+    <section class="band band-stone" id="budget" data-header="light" data-window="Цены">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Бюджет</p>
@@ -236,7 +245,7 @@
       </div>
     </section>
 
-    <section class="contact" id="contact" data-header="dark">
+    <section class="contact" id="contact" data-header="dark" data-window="Контакт">
       <div class="container" data-animate="up">
         <p class="eyebrow">Контакт</p>
         <h2>Есть задача? Давайте обсудим.</h2>
@@ -249,7 +258,7 @@
     </section>
   </main>
 
-  <footer class="site-footer" data-header="light">
+  <footer class="site-footer" data-header="light" data-window="Колофон">
     <div class="container footer-grid">
       <div>
         <p class="footer-title">Направления</p>
@@ -282,6 +291,14 @@
       </div>
     </div>
   </footer>
+
+  <nav class="dock" aria-label="Dock">
+    <a href="#top" aria-label="Обо мне"><span aria-hidden="true">О</span></a>
+    <a href="#services" aria-label="Направления"><span aria-hidden="true">Н</span></a>
+    <a href="#process" aria-label="Порядок"><span aria-hidden="true">П</span></a>
+    <a href="#budget" aria-label="Цены"><span aria-hidden="true">₽</span></a>
+    <a href="#contact" aria-label="Почта"><span aria-hidden="true">@</span></a>
+  </nav>
 
   <div class="drag-hint" hidden>
     <p>Тяните мышью. На телефоне — за метку.</p>

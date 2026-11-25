@@ -7,7 +7,7 @@
   const footer = document.querySelector(".site-footer");
   let currentTheme = "dark";
 
-  const styles = ["apple", "paper", "night", "move"];
+  const styles = ["apple", "paper", "night", "move", "windows", "macos"];
   let dragReady = false;
   const styleSwitch = document.querySelector(".style-switch");
   const styleButtons = styleSwitch ? Array.from(styleSwitch.querySelectorAll("[data-style]")) : [];
@@ -107,8 +107,8 @@
     });
   });
 
-  const clock = document.querySelector("[data-clock]");
-  if (clock) {
+  const clocks = document.querySelectorAll("[data-clock]");
+  if (clocks.length) {
     const format = new Intl.DateTimeFormat("ru-RU", {
       timeZone: "Europe/Moscow",
       hour: "2-digit",
@@ -116,8 +116,12 @@
     });
     const paintClock = () => {
       const now = new Date();
-      clock.textContent = format.format(now);
-      clock.setAttribute("datetime", now.toISOString());
+      const text = format.format(now);
+      const stamp = now.toISOString();
+      clocks.forEach((clock) => {
+        clock.textContent = text;
+        clock.setAttribute("datetime", stamp);
+      });
     };
     paintClock();
     window.setInterval(paintClock, 1000);
@@ -146,7 +150,17 @@
     });
   });
 
+  const desktopSelectors = [".hero", "#craft", "#services", ".pull", "#process", "#budget", "#contact", ".site-footer"];
+  const desktopItems = [];
+  desktopSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      el.dataset.dragId = "desktop:" + selector + ":" + index;
+      desktopItems.push(el);
+    });
+  });
+
   const hint = document.querySelector(".drag-hint");
+  const hintText = hint ? hint.querySelector("p") : null;
   const resetButton = document.querySelector(".drag-reset");
   let dragPositions = {};
   try {
@@ -166,11 +180,26 @@
     return { x: Number(raw[0]) || 0, y: Number(raw[1]) || 0 };
   }
 
+  function currentDragItems() {
+    const style = document.documentElement.dataset.style;
+    if (style === "move") return dragItems;
+    if (style === "windows" || style === "macos") return desktopItems;
+    return [];
+  }
+
   function syncDragMode() {
     if (!dragReady) return;
-    const on = document.documentElement.dataset.style === "move";
-    if (hint) hint.hidden = !on;
-    dragItems.forEach((el, index) => {
+    const style = document.documentElement.dataset.style;
+    const active = currentDragItems();
+    const desktop = style === "windows" || style === "macos";
+    if (hint) hint.hidden = active.length === 0;
+    if (hintText) {
+      hintText.textContent = desktop
+        ? "Тяните за шапку окна."
+        : "Тяните мышью. На телефоне — за метку.";
+    }
+    dragItems.concat(desktopItems).forEach((el, index) => {
+      const on = active.indexOf(el) !== -1;
       el.classList.toggle("drag-item", on);
       if (!on) {
         el.style.translate = "";
@@ -182,11 +211,11 @@
         const grip = document.createElement("button");
         grip.type = "button";
         grip.className = "drag-grip";
-        grip.setAttribute("aria-label", "Перетащить блок");
+        grip.setAttribute("aria-label", "Перетащить");
         grip.innerHTML = "<span></span>";
         el.appendChild(grip);
       }
-      el.style.rotate = tilts[index % tilts.length] + "deg";
+      el.style.rotate = style === "move" ? tilts[index % tilts.length] + "deg" : "";
       const saved = dragPositions[el.dataset.dragId];
       el.style.translate = saved ? saved.x + "px " + saved.y + "px" : "0 0";
     });
@@ -195,7 +224,8 @@
   let drag = null;
 
   document.addEventListener("pointerdown", (event) => {
-    if (document.documentElement.dataset.style !== "move" || event.button > 0) return;
+    const style = document.documentElement.dataset.style;
+    if ((style !== "move" && style !== "windows" && style !== "macos") || event.button > 0) return;
     const item = event.target.closest(".drag-item");
     if (!item || (hint && hint.contains(event.target))) return;
     const grip = event.target.closest(".drag-grip");
@@ -256,15 +286,18 @@
 
   if (resetButton) {
     resetButton.addEventListener("click", () => {
-      dragPositions = {};
+      const items = currentDragItems();
+      items.forEach((el) => {
+        delete dragPositions[el.dataset.dragId];
+      });
       rememberDrag();
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      dragItems.forEach((el) => {
+      items.forEach((el) => {
         if (!reduce) el.classList.add("is-resetting");
         el.style.translate = "0 0";
       });
       window.setTimeout(() => {
-        dragItems.forEach((el) => el.classList.remove("is-resetting"));
+        items.forEach((el) => el.classList.remove("is-resetting"));
       }, 480);
     });
   }
